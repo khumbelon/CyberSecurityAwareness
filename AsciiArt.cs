@@ -1,15 +1,16 @@
-﻿using System;
+using System;// imports system namespace for console input and output
 
-namespace CyberSecurityAwarenessBot
+namespace CyberSecurityAwarenessBot// name of the project and namespace
 {
-    public class AsciiArt
+    public class AsciiArt // This class is responsible for displaying ASCII art and the chatbot's logo
     {
         public void Display()
         {
-            DisplayLogo();
+            DisplayLogo();// display the Logo
+
         }
 
-        public void DisplayLogo()
+        public void DisplayLogo()// This method displays the ASCII art logo of the chatbot
         {
             Console.Clear();
 
@@ -25,15 +26,16 @@ namespace CyberSecurityAwarenessBot
             Console.WriteLine("Welcome to the Cybersecurity Awareness Chatbot!");
             Console.ResetColor();
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
-            Console.WriteLine(@"__   __                               
-__  _  __ ____ |  | |  |   ____   ____   _____   ____  
-\ \/ \/ // __ \|  | |  | _/ ___\ / __ \ /     \_/ __ \ 
- \     /\  ___/_  |__  |__  \___(  \_\ )  | |  \  ___/_
-  \/\_/  \___  /____/____/\___  /\____/|__|_|  /\___  /
-             \/               \/             \/     \/ ");
+            Console.WriteLine(@"  ______   ______  _____ ____  ____  _____ ____ 
+ / ___\ \ / / __ )| ____|  _ \/ ___|| ____/ ___|
+| |    \ V /|  _ \|  _| | |_) \___ \|  _|| |    
+| |___  | | | |_) | |___|  _ < ___) | |__| |___ 
+ \____| |_| |____/|_____|_| \_\____/|_____\____| ");
+            Console.ResetColor();
 
-            Console.Write("You > ");
+            Console.WriteLine();
         }
     }
 }
