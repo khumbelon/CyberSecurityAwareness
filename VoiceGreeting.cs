@@ -1,28 +1,30 @@
-﻿using System;
+using System;//// imports system namespace for console input and output
 using System.IO;
-using System.Media;
+using System.Media;// imports system namespace for playing sound files
 
-namespace CyberSecurityAwarenessBot
+namespace CyberSecurityAwarenessBot// name of the project and namespace
 {
     public class VoiceGreeting
     {
-        public void Play()
+        public void Play()// This method plays a greeting sound when the chatbot starts
         {
-            try
-            {
-                string soundPath = Path.Combine(AppContext.BaseDirectory, "greeting.wav");
-                if (!File.Exists(soundPath))
-                {
-                    Console.WriteLine($"Greeting sound not found: {soundPath}");
-                    return;
-                }
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string soundPath = Path.Combine(baseDirectory, "greeting.wav");
 
-              using SoundPlayer player = new SoundPlayer(soundPath);
-                player.PlaySync();
-            }
-            catch (Exception ex)
+            if (File.Exists(soundPath))
             {
-                Console.WriteLine($"Error playing sound: {ex.Message}");
+                soundPath= Path.Combine(baseDirectory,"greeting.wav");
+            }
+                if (File.Exists(soundPath))
+            {
+                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundPath)) 
+                {
+                    player.PlaySync();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Greeting sound file not found.");
             }
         }
     }
