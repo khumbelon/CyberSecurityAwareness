@@ -88,7 +88,10 @@ Lwazi: exit [Application terminates]
 - **Console UI:** System.Console with color support
 
 ## GitHub Actions
-Add your successful CI screenshot here.
+
+<img width="686" height="171" alt="CI" src="https://github.com/user-attachments/assets/780f624a-746e-4d3e-8c66-1df00063e2fb" />
+
+.
 
 ## Video Presentation
 Unlisted YouTube link: [Insert Link Here]
