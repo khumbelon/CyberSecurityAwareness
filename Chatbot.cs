@@ -1,6 +1,6 @@
-﻿using System;
+using System;//imports system namespace for console input and output
 
-namespace CyberSecurityAwarenessBot
+namespace CyberSecurityAwarenessBot// name of the project and namespace
 {
     public class Chatbot // This class represents the chatbot
     {
@@ -9,15 +9,18 @@ namespace CyberSecurityAwarenessBot
 
         public void Start() // This method starts the chatbot interaction
         {
-            Console.Write("Enter your name: ");
-            string? inputName = Console.ReadLine();
+            Console.WriteLine(" Hello! What is your name?\r\n"); // Greet the user
+            Console.Write("Enter your name: ");// Prompt the user to enter their name
+            string? inputName = Console.ReadLine();// Read the user's input for their name
             user.Name = string.IsNullOrWhiteSpace(inputName) ? "User" : inputName.Trim(); // Read and sanitize the user's name
 
             Console.WriteLine($"Welcome {user.Name} !"); // Greet the user by name
+            Console.WriteLine(" I'm here to help you stay safer online."); // Introduce the chatbot's purpose
+            Console.WriteLine("you can ask me questions about cybersecurity, and I'll do my best to provide helpful answers."); 
 
             while (true) // using the while loop
             {
-                Console.Write($"{user.Name}: ");
+                Console.Write($"{user.Name}: ");// Prompt the user to enter a question
                 string? q = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(q)) // Check if the input is empty or whitespace
