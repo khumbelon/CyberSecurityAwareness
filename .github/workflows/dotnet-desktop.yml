@@ -11,7 +11,13 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Restore
-        run: dotnet restore CybersecurityChatbotGUI/CybersecurityChatbotGUI.csproj
-      - name: Build
-        run: dotnet build CybersecurityChatbotGUI/CybersecurityChatbotGUI.csproj --no-restore --configuration Release
+      - name: Find all csproj files
+        shell: pwsh
+        run: Get-ChildItem -Recurse -Filter *.csproj | ForEach-Object { Write-Host $_.FullName }
+      - name: Restore and Build
+        shell: pwsh
+        run: |
+          $proj = Get-ChildItem -Recurse -Filter *.csproj | Select-Object -First 1
+          Write-Host "FOUND PROJECT: $($proj.FullName)"
+          dotnet restore "$($proj.FullName)"
+          dotnet build "$($proj.FullName)" --no-restore --configuration Release
