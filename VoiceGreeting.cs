@@ -1,30 +1,45 @@
-using System;//// imports system namespace for console input and output
+﻿using System;
 using System.IO;
-using System.Media;// imports system namespace for playing sound files
+using System.Media;
+using System.Threading.Tasks;
 
-namespace CyberSecurityAwarenessBot// name of the project and namespace
+namespace CybersecurityChatbotGUI
 {
     public class VoiceGreeting
     {
-        public void Play()// This method plays a greeting sound when the chatbot starts
+        public void PlayWelcome()
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string soundPath = Path.Combine(baseDirectory, "greeting.wav");
+            // Run on background thread so it doesn't block UI
+            Task.Run(() => PlayGreetingAsync());
+        }
 
-            if (File.Exists(soundPath))
+        private async Task PlayGreetingAsync()
+        {
+            try
             {
-                soundPath= Path.Combine(baseDirectory,"greeting.wav");
-            }
-                if (File.Exists(soundPath))
-            {
-                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundPath)) 
+                string soundPath = Path.Combine(AppContext.BaseDirectory,"Assets", "greeting.wav");
+
+                Console.WriteLine($"Looking for greeting.wav at: {soundPath}");
+                Console.WriteLine($"File exists: {File.Exists(soundPath)}");
+
+                if (!File.Exists(soundPath))
+                {
+                    Console.WriteLine($"Greeting sound not found.");
+                    Console.WriteLine($"Current directory: {Directory.GetCurrentDirectory()}");
+                    Console.WriteLine($"Files in directory: {string.Join(", ", Directory.GetFiles(AppContext.BaseDirectory, "*.wav"))}");
+                    return;
+                }
+
+                // Simple direct playback using SoundPlayer
+                using (SoundPlayer player = new SoundPlayer(soundPath))
                 {
                     player.PlaySync();
+                    Console.WriteLine("Greeting played successfully!");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Greeting sound file not found.");
+                Console.WriteLine($"Error playing greeting: {ex.Message}");
             }
         }
     }

@@ -1,21 +1,17 @@
-﻿using System;//imports system namespace for console input and output
 
-namespace CyberSecurityAwarenessBot// name of the project and namespace
+using System;
+using System.Windows.Forms;
+
+namespace CybersecurityChatbotGUI
 {
-    class Program //declares the program that starts the chatbot application
+    internal static class Program
     {
-        static void Main(string[] args) // The main entry point of the application
+        [STAThread]
+        static void Main()
         {
-            VoiceGreeting voice = new VoiceGreeting();//creates an instance of the VoiceGreeting class
-            voice.Play();
-
-            AsciiArt art = new AsciiArt();//creates an instance of the AsciiArt class
-            art.Display();
-
-            Chatbot bot = new Chatbot();//creates an instance of the Chatbot class
-            bot.Start();
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new ChatbotForm());
         }
     }
 }
-
