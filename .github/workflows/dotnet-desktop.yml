@@ -12,6 +12,6 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore CyberSecurityChatBotGUI.csproj
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build CyberSecurityChatBotGUI.csproj--no-restore --configuration Release
