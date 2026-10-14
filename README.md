@@ -90,6 +90,8 @@ Lwazi: exit [Application terminates]
 ## GitHub Actions
 
 <img width="686" height="171" alt="CI" src="https://github.com/user-attachments/assets/780f624a-746e-4d3e-8c66-1df00063e2fb" />
+<img width="674" height="146" alt="image" src="https://github.com/user-attachments/assets/fe49b8a8-b9f5-4dcf-b222-164862437771" />
+
 
 .
 
