@@ -14,4 +14,4 @@ jobs:
       - name: Restore
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore --configuration Releas
+        run: dotnet build --no-restore --configuration Release
