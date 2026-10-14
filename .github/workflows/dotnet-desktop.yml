@@ -11,13 +11,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Find all csproj files
-        shell: pwsh
-        run: Get-ChildItem -Recurse -Filter *.csproj | ForEach-Object { Write-Host $_.FullName }
-      - name: Restore and Build
-        shell: pwsh
-        run: |
-          $proj = Get-ChildItem -Recurse -Filter *.csproj | Select-Object -First 1
-          Write-Host "FOUND PROJECT: $($proj.FullName)"
-          dotnet restore "$($proj.FullName)"
-          dotnet build "$($proj.FullName)" --no-restore --configuration Release
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore --configuration Releas
