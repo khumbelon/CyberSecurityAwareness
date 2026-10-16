@@ -11,17 +11,16 @@ The Cybersecurity Awareness Chatbot is an interactive console application design
 - **Voice Greeting:** Plays a welcome audio greeting (`greeting.wav`) using System.Media.SoundPlayer
 - **ASCII Art Display:** Displays an engaging visual banner using colored console output
 - **Personalized Greeting:** Captures user name and displays a friendly, customized welcome message
-- **Interactive Responses:** Responds to user queries about:
-  - Password safety and best practices
-  - Phishing attacks and prevention strategies
-  - Safe browsing techniques
-  - Chatbot purpose and capabilities
+- **Interactive Responses
 - **Input Validation:** Ensures user queries are non-empty and appropriately handled
 - **Colored Console Interface:** Uses ConsoleColor for enhanced visual appeal (Cyan, Green, etc.)
 - **Case-Insensitive Matching:** Accepts user input in any case format
+- chat history displayed in form
+- user type in bottom textbox + clicksend
+- 
 
 ## Architecture
-
+Part1
 ### Class Structure
 1. **Program.cs** - Entry point; orchestrates initialization of `VoiceGreeting`, `AsciiArt`, and `Chatbot`
 2. **VoiceGreeting.cs** - Handles audio playback of `greeting.wav` using `System.Media.SoundPlayer`
@@ -30,7 +29,18 @@ The Cybersecurity Awareness Chatbot is an interactive console application design
 5. **ResponseHandler.cs** - Generates context-aware responses based on user input using substring matching
 6. **UserProfile.cs** - Data model storing user information (Name, FavoriteTopic)
 
+Part 2
+1. **Program.cs** - Entry: `Application.Run(new ChatbotForm());`
+2. **ChatbotForm.cs** - Main GUI, chat display, Send button, RichTextBox history
+3. **ChatbotForm.Designer.cs** - UI layout
+4. **Chatbot.cs** - Reused logic, now called by Form, not console
+5. **KeyWordRespondder.cs** -returns string to Form
+6. **Assets/greeting.wav**
+7. Sentiment- new part feature
+8. MemoryStore.cs
+
 ### Program Flow
+part1
 1.	Program.Main() executes
 2.	VoiceGreeting.Play() plays greeting audio
 3.	AsciiArt.Display() shows ASCII art banner
@@ -40,23 +50,19 @@ The Cybersecurity Awareness Chatbot is an interactive console application design
 •	Enters loop: reads input → validates → delegates to ResponseHandler → displays colored output
 •	Exits on "exit" command
 
+part2
+- Program.Main() Application.run(chatbotform)
+- ChatbotForm-load- Voicegreeting.play() +Display ASCII in label
+- user type in a bottom textbox- click send
+- exit form-close
 ## How to Run
 
 ### Prerequisites
 - Visual Studio 2022 or .NET 8 SDK
 - `greeting.wav` file (PCM WAV format, 16-bit, 44.1 kHz recommended)
 
-### Setup & Execution
-1. Clone or download the repository
-2. Open the solution in Visual Studio 2022
-3. Place `greeting.wav` in the project root folder (same directory as the `.csproj` file)
-4. In Visual Studio, right-click `greeting.wav` → Properties → set **Copy to Output Directory** = **Copy if newer**
-5. Build the project: **Build** → **Build Solution** (targets .NET 8)
-6. Run the application:
-   - **Debug Mode:** Press `F5` or **Debug** → **Start Debugging**
-   - **Release Mode:** Press `Ctrl+F5` or **Debug** → **Start Without Debugging**
-
 ### User Interaction Example
+Part 1
 ================================================
 CYBERSECURITY AWARENESS BOT
 Welcome to the Cybersecurity Awareness Chatbot!
@@ -66,6 +72,37 @@ Welcome Lwazi ! I'm here to help you stay safer online. You can ask me questions
 Lwazi: what can i ask Bot: You can ask about: Password safety, Phishing, Safe browsing, or My purpose.
 Lwazi: password safety Bot: To keep your passwords safe, use a combination of letters, numbers, and symbols. Avoid using information like birthdays or names as a password.
 Lwazi: exit [Application terminates]
+
+part2
+
+#### Part 2 - WFA GUI 
+Form_Load Event
+- VoiceGreeting.Play() -> greeting.wav plays
+- RichTextBox shows:
+  Welcome! I'm your Cybersecurity Awareness Assistant.
+  You can ask me about:
+  • Password Safety
+  • Phishing
+  • Scams
+  • Privacy
+  • Malware
+  • Safe Browsing
+  • Two-Factor Authentication
+
+User Interaction - GUI
+User types in bottom TextBox: "How can I protect my privacy?"
+Clicks [Send] button
+Bot displays in RichTextBox:
+  YOU: How can I protect my privacy?
+  BOT: Use a VPN when connecting to public Wi-Fi...
+
+User types: "add task - remind me to check passwords"
+Bot: Task added! Reminder set.
+
+User types: "start quiz"
+Bot: [Quiz Window Opens - 10 Cybersecurity Questions]
+
+User types: "exit" or clicks X -> [Application closes, chat log saved]
 
 ## Requirements
 - **Visual Studio 2022** (Community, Professional, or Enterprise edition)
@@ -86,17 +123,16 @@ Lwazi: exit [Application terminates]
 - **IDE:** Visual Studio 2022
 - **Audio:** System.Media.SoundPlayer (Windows)
 - **Console UI:** System.Console with color support
+- **WFA UI(part2)
 
 ## GitHub Actions
 
 <img width="686" height="171" alt="CI" src="https://github.com/user-attachments/assets/780f624a-746e-4d3e-8c66-1df00063e2fb" />
 <img width="674" height="146" alt="image" src="https://github.com/user-attachments/assets/fe49b8a8-b9f5-4dcf-b222-164862437771" />
-
-
-.
+3 tags: v0.5-alpha, v0.9-beta,v1.0
 
 ## Video Presentation
-Unlisted YouTube link:(https://youtu.be/fk-DmRKEFsc)
+YouTube link:(https://youtu.be/fk-DmRKEFsc)
 
 ## References
 
@@ -154,6 +190,3 @@ Nelwamondo Khumbelo (ST10498633)
 - Inspired by OWASP and NIST cybersecurity standards
 - Built with .NET 8 and C# 12.0
 - Educational content sourced from official cybersecurity organizations
-
-## Contact & Support
-For questions or issues, please refer to the project requirements or contact your instructor.
