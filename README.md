@@ -132,7 +132,8 @@ User types: "exit" or clicks X -> [Application closes, chat log saved]
 3 tags: v0.5-alpha, v0.9-beta,v1.0
 
 ## Video Presentation
-YouTube link:(https://youtu.be/fk-DmRKEFsc)
+YouTube link:(https://youtu.be/fk-DmRKEFsc) part 1         
+YouTube link:(https://youtu.be/jhLhkcr06-E) part 2
 
 ## References
 
